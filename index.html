@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEP Sound | Tontechnik & Studio Wedemark</title>
+    <!-- System & Clean Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #141312;
+            --bg-card: #1c1a18;
+            --bg-card-hover: #24221f;
+            --accent: #d4a359;
+            --accent-muted: #8c6d3b;
+            --text-main: #ece7e1;
+            --text-muted: #9e968d;
+            --border: #2e2a25;
+            --max-width: 1000px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(20, 19, 18, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-avatar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero-text p.lead {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: #141312;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #e5b369;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+
+        /* About */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+
+        .about-text p strong {
+            color: var(--text-main);
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        /* Services Grid */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 32px 24px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .service-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .service-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .service-price span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* Contact Grid */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 8px;
+        }
+
+        .contact-card span {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .contact-card a, .contact-card p {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-nav button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .footer-nav button:hover {
+            color: var(--text-main);
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 200;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal-inner {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .modal-body h3, .modal-body h4 {
+            color: var(--text-main);
+            margin: 16px 0 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content, .about-layout, .services-list, .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="brand">
+                    <img src="logo.png" alt="AEP Sound Logo">
+                    <span>aep sound</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about">Über Mich</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-avatar">
+                        <img src="logo.png" alt="AEP Sound Logo">
+                    </div>
+                    <div class="hero-text">
+                        <h1>AEP Sound</h1>
+                        <p class="lead">"Creating the perfect Sound"</p>
+                        <div class="hero-actions">
+                            <a href="#contact" class="btn">Projekt anfragen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <span class="section-label">Philosophie</span>
+                <h2 class="section-title">Persönlich & Detailverliebt</h2>
+                <div class="about-layout">
+                    <div class="about-text">
+                        <p>Bei AEP Sound steht der Künstler im Mittelpunkt. Seit 2020 arbeite ich unter dem Motto <strong>"Creating the perfect Sound"</strong> daran, den optimalen Klang für musikalische Projekte im Studio und auf der Bühne zu realisieren.</p>
+                        <p>Der Fokus liegt bei mir auf einer persönlichen Betreuung auf Augenhöhe und dem Blick fürs Detail. Die menschliche Komponente ist dabei genauso wichtig wie das technische Handwerk.</p>
+                        <p>Egal ob Einzeltrack, komplette Aufnahme oder die Betreuung vor Ort bei einem Live-Event – jedes Projekt wird mit vollem Einsatz begleitet, um exakt das gewünschte Ergebnis ohne Kompromisse zu erzielen.</p>
+                    </div>
+                    <div class="about-img">
+                        <img src="studio.jpg" alt="AEP Sound Studio">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <span class="section-label">Angebot</span>
+                <h2 class="section-title">Leistungen & Preise</h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div>
+                            <h3>Mixing</h3>
+                            <p>Präzises Abmischen einzelner Tonspuren. Für Transparenz, Ausgewogenheit und maximale Klangtiefe in deiner Produktion.</p>
+                        </div>
+                        <div class="service-price">129 € <span>/ Song</span></div>
+                    </div>
+
+                    <div class="service-item">
+                        <div>
+                            <h3>Mastering</h3>
+                            <p>Der finale klangliche Feinschliff. Optimierung der Lautheit und Frequenzbalance für alle gängigen Streaming-Dienste.</p>
+                        </div>
+                        <div class="service-price">55 € <span>/ Song</span></div>
+                    </div>
+
+                    <div class="service-item">
+                        <div>
+                            <h3>Live-Tontechnik</h3>
+                            <p>Verlässliche tontechnische Betreuung deines Events. Vom Aufbau und Soundcheck bis zur eigentlichen Performance.</p>
+                        </div>
+                        <div class="service-price">Auf Anfrage</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <span class="section-label">Anfrage</span>
+                <h2 class="section-title">Projekt besprechen</h2>
+                <div class="contact-layout">
+                    <div class="contact-details">
+                        <div class="contact-card">
+                            <span>Ansprechpartner</span>
+                            <p>Leon Pohle</p>
+                        </div>
+                        <div class="contact-card">
+                            <span>Adresse</span>
+                            <p>Moorhestern 6, 30900 Wedemark</p>
+                        </div>
+                        <div class="contact-card">
+                            <span>Telefon</span>
+                            <a href="tel:015253421557">01525 3421557</a>
+                        </div>
+                        <div class="contact-card">
+                            <span>E-Mail</span>
+                            <a href="mailto:moin@aepsound.de">moin@aepsound.de</a>
+                        </div>
+                    </div>
+
+                    <form action="https://formspree.io/f/moin@aepsound.de" method="POST">
+                        <div class="form-field">
+                            <label for="name">Name / Band</label>
+                            <input type="text" id="name" name="name" required placeholder="z. B. Max Mustermann">
+                        </div>
+                        <div class="form-field">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" name="email" required placeholder="name@domain.de">
+                        </div>
+                        <div class="form-field">
+                            <label for="service">Leistung</label>
+                            <select id="service" name="service">
+                                <option value="mixing">Mixing (129 € / Song)</option>
+                                <option value="mastering">Mastering (55 € / Song)</option>
+                                <option value="live">Live-Tontechnik</option>
+                                <option value="sonstiges">Sonstige Anfrage</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Nachricht</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Kurze Beschreibung deines Projekts..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; justify-content: center;">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 AEP Sound – Leon Pohle</p>
+                <div class="footer-nav">
+                    <button onclick="openModal('impressumModal')">Impressum</button>
+                    <button onclick="openModal('datenschutzModal')">Datenschutz</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div id="impressumModal" class="modal">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('impressumModal')">&times;</button>
+            <h2>Impressum</h2>
+            <div class="modal-body">
+                <p>Leon Pohle<br>
+                AEP Sound Tontechnik<br>
+                Moorhestern 6<br>
+                30900 Wedemark</p>
+
+                <h3>Kontakt</h3>
+                <p>Telefon: 01525 3421557<br>
+                E-Mail: moin@aepsound.de</p>
+
+                <h3>Verbraucherstreitbeilegung</h3>
+                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+                <p style="margin-top: 15px;"><small>Quelle: eRecht24</small></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal" class="modal">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('datenschutzModal')">&times;</button>
+            <h2>Datenschutzerklärung</h2>
+            <div class="modal-body">
+                <h3>1. Datenschutz auf einen Blick</h3>
+                <h4>Allgemeine Hinweise</h4>
+                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+
+                <h4>Datenerfassung auf dieser Website</h4>
+                <p><strong>Wer ist verantwortlich für die Datenerfassung?</strong><br>
+                Die Datenverarbeitung erfolgt durch den Websitebetreiber (siehe Impressum).</p>
+
+                <h3>2. Hosting</h3>
+                <p>Diese Website wird extern gehostet (z. B. GitHub Pages / WIX). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.</p>
+
+                <h3>3. Allgemeine Hinweise</h3>
+                <p>Verantwortliche Stelle:<br>
+                AEP Sound – Leon Pohle<br>
+                Moorhestern 6, 30900 Wedemark<br>
+                E-Mail: moin@aepsound.de</p>
+
+                <p style="margin-top: 15px;"><small>Quelle: eRecht24</small></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
